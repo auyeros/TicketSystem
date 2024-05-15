@@ -1,0 +1,124 @@
+/* General container styles */
+.container {
+    min-height: 100vh;
+    padding: 0 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0;
+}
+
+.main {
+    padding: 5rem 0;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer {
+    width: 100%;
+    height: 100px;
+    border-top: 1px solid #eaeaea;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.title {
+    margin: 0;
+    line-height: 1.15;
+    font-size: 4rem;
+    text-align: center;
+    color: black; /* Ensuring title text is black */
+}
+
+.grid {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 800px;
+    margin-top: 3rem;
+}
+
+.card {
+    margin: 1rem;
+    flex-basis: 45%;
+    padding: 1.5rem;
+    text-align: center;
+    color: inherit;
+    text-decoration: none;
+    border: 1px solid #eaeaea;
+    border-radius: 10px;
+    transition: color 0.15s ease, border-color 0.15s ease;
+    background-color: #ffffff;
+    font-family: "Roboto", sans-serif;
+}
+
+.card label {
+    color: black;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.card:hover {
+    color: green;
+    border-color: green;
+}
+
+.card input[type="text"] {
+    color: black; /* Text color for input fields */
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 8px;
+    width: calc(100% - 16px);
+    box-sizing: border-box;
+}
+
+.card button {
+    background-color: black; /* Button background color */
+    color: white; /* Button text color */
+    border: none;
+    padding: 10px 20px;
+    border-radius: var(--border-radius);
+    font-family: "Roboto", sans-serif;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.card button:hover {
+    background-color: green;
+}
+
+.logo {
+    height: 1em;
+    margin-left: 0.5rem;
+}
+
+/* Specific styles for QR code texts */
+/* Assuming qr-code-text is already defined for black color text */
+.qr-code-text {
+    color: black; /* Ensuring QR code related texts are black */
+    margin-bottom: 1rem; /* Adding space below the text */
+}
+
+.qr-code-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem; /* Adding space below the QR code image */
+}
+
+.success-message {
+    margin-bottom: 1rem; /* Adding space above the button in success message */
+}
+
+@media (max-width: 600px) {
+    .grid {
+        width: 100%;
+        flex-direction: column;
+    }
+}
