@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect, useReducer, useCallback, useMemo } from 'react';
+import React, { createContext, useContext, useEffect, useReducer, useMemo } from 'react';
 import { supabase } from '../lib/supabaseClient';
 
 const AuthContext = createContext();
@@ -32,17 +32,16 @@ export const AuthProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
-    const { data: authListener } = supabase.auth.onAuthStateChange(
-      (event, session) => {
-        dispatch({ type: actionTypes.SET_USER, payload: session?.user ?? null });
-        dispatch({ type: actionTypes.SET_SUCCESS, payload: true });
-      },
-      (error) => {
-        dispatch({ type: actionTypes.SET_ERROR, payload: error.message || 'An error occurred. Please try again later.' });
-      }
-    );
+    const authListener = supabase.auth.onAuthStateChange((event, session) => {
+      dispatch({ type: actionTypes.SET_USER, payload: session?.user ?? null });
+      dispatch({ type: actionTypes.SET_SUCCESS, payload: true });
+    });
 
-    return () => authListener?.unsubscribe();
+    return () => {
+      if (authListener.data) {
+        authListener.data(); // Correct way to unsubscribe
+      }
+    };
   }, []);
 
   const authActions = useMemo(() => {
