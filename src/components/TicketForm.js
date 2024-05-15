@@ -47,14 +47,14 @@ export default function TicketForm() {
         },
         body: JSON.stringify({
           to: to,
-          subject: 'Your QR Code',
-          text: 'Here is your QR code for the event. Please check the attachment.',
+          subject: 'Tu codigo QR',
+          text: 'Acá te mandamos tu QR como archivo adjunto. Por favor no lo pierdas y asegurate de no compartirlo.',
           attachments: [{
             content: qrCodeBase64.split("base64,")[1],
-            filename: "QRCode.png",
+            filename: "QR.png",
             type: "image/png",
             disposition: "attachment",
-            content_id: "QR Code"
+            content_id: "QR"
           }]
         }),
       });
@@ -90,19 +90,19 @@ export default function TicketForm() {
 
   return (
     <div className={styles.container}>
-      <h2 className={styles.title}>Generate QR Code</h2>
+      <h2 className={styles.title}>Generar Codigo QR</h2>
       <div className={styles.card}>
-        <label> Name: <input type="text" value={name} onChange={(e) => setName(e.target.value)} /> </label>
+        <label> Nombre: <input type="text" value={name} onChange={(e) => setName(e.target.value)} /> </label>
         <br />
         <label> Correo: <input type="text" value={correo} onChange={(e) => setCorreo(e.target.value)} /> </label>
         <br />
-        <button onClick={handleGenerateQRCode} disabled={loading}>Generate QR Code</button>
+        <button onClick={handleGenerateQRCode} disabled={loading}>Generar QR</button>
       </div>
       {loading && <p>Loading...</p>}
       {error && <p className={styles['qr-code-text']}>Error: {error}</p>}
       {showSuccessMessage && (
         <div className={styles.card}>
-          <p className={`${styles['qr-code-text']} ${styles['success-message']}`}>QR code generated and email sent successfully!</p>
+          <p className={`${styles['qr-code-text']} ${styles['success-message']}`}>QR generado y email enviado!</p>
           <button onClick={handleReset}>OK</button>
         </div>
       )}
